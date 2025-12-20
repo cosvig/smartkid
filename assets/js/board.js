@@ -12,6 +12,7 @@ var endOfLessonSet = false;
 
 let repeatdiscribeCount = 0;
 let repeattutCount = 0;
+let repeattutAgainTimes = 3; //Do not reset to 0.
 let challengeCount = 0;
 let againCountRepeat = "no";
 let audioPlayStopControl = "play";
@@ -177,9 +178,26 @@ export function threeFourLWBoard(){
 	lessonPic.innerHTML = `<img width="300px" height="200px" src="./pixagime/${currentMergeSet[0].thlwImage}"  draggable="false">`;
 	lessonWDC.innerHTML = currentMergeSet[0].thwDescribe;
 	
-	
+	clickingAgain()
 	//statsCounter = currentMergeSet.length;
 	welcomeAudio()
+}
+function clickingAgain(){
+	let vClickElements = document.querySelectorAll('.rboard .v-click');
+
+	// Loop through elements and add event listener
+	vClickElements.forEach((element, index) => {
+	  element.addEventListener('click', () => {
+		vClickElements.forEach(el => el.classList.remove('active'));
+		element.classList.add('active');
+		  if(index == 0) repeattutAgainTimes = 2;
+		  else if(index == 1) repeattutAgainTimes = 3;
+		  else if(index == 2) repeattutAgainTimes = 4;
+
+		//console.log(index + 2); // +1 because index is 0-based
+	  });
+	});
+
 }
 export function endLessonClose(){
 	endLessonAudio();
@@ -220,7 +238,7 @@ export function startLessong(){
 			}, 500);
 			
 		}else{
-			if(repeattutCount < 3){ //spelling audio_l
+			if(repeattutCount < repeattutAgainTimes){ //spelling audio_l
 				if(againCountRepeat == "no"){
 					repeattutCount++;
 					againCountRepeat = "yes"
@@ -317,6 +335,7 @@ export function startLessong(){
 /****************** LESSON DESCRIPTION, SPELLNNG AND CHALLENGE *****************/
 function gotodescriptionP(){
 	descriptionProp++;
+	document.getElementById("rboard").style.display = '';
 	let lessonPic = document.getElementById("lessonPic");
 	let lessonW = document.getElementById("lessonW");
 	let lessonWDC = document.getElementById("lessonWDC");
@@ -326,6 +345,7 @@ function gotodescriptionP(){
 }
 
 function gotospellingP(){
+	document.getElementById("rboard").style.display = 'none';
 	let lessonPic = document.getElementById("lessonPic");
 	let lessonW = document.getElementById("lessonW");
 	let lessonWDC = document.getElementById("lessonWDC");
@@ -653,7 +673,7 @@ function challengeQuesiontAudo(){
 
 /*****************************HELPER FUNCTIONS *************************/
 function globalAudioFunc(audioSound) {
-	stopAllAudio();
+	stopAllAudio()
     // Check if audio is in cache
     if (audioCache.has(audioSound)) {
         const cachedAudio = audioCache.get(audioSound);
@@ -847,5 +867,4 @@ function randomAnimLetters(){
 function stringToArray(str) {
     return str.split('');
 }
-
 
