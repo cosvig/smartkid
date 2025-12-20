@@ -1,0 +1,17 @@
+[
+  {"thlwName": "LAMP", "thwDescribe": "A lamp gives light when it is dark.", "thlwAudioDescribe": "lamp_describe.mp3", "thlwAudioL": "lamp_l.mp3", "thlwAudioQ": "lamp_q.mp3", "thlwImage": "lamp.png"},
+  {"thlwName": "BALL", "thwDescribe": "A ball is round and you can throw or kick it.", "thlwAudioDescribe": "ball_describe.mp3", "thlwAudioL": "ball_l.mp3", "thlwAudioQ": "ball_q.mp3", "thlwImage": "ball.png"},
+  {"thlwName": "BIRD", "thwDescribe": "A bird can fly and sings in the sky.", "thlwAudioDescribe": "bird_describe.mp3", "thlwAudioL": "bird_l.mp3", "thlwAudioQ": "bird_q.mp3", "thlwImage": "bird.png"},
+  {"thlwName": "BOOK", "thwDescribe": "A book has many pages with words you can read.", "thlwAudioDescribe": "book_describe.mp3", "thlwAudioL": "book_l.mp3", "thlwAudioQ": "book_q.mp3", "thlwImage": "book.png"},
+  {"thlwName": "TREE", "thwDescribe": "A tree is tall, has a trunk, and leaves.", "thlwAudioDescribe": "tree_describe.mp3", "thlwAudioL": "tree_l.mp3", "thlwAudioQ": "tree_q.mp3", "thlwImage": "tree.png"},
+  {"thlwName": "FISH", "thwDescribe": "A fish lives in water and swims.", "thlwAudioDescribe": "fish_describe.mp3", "thlwAudioL": "fish_l.mp3", "thlwAudioQ": "fish_q.mp3", "thlwImage": "fish.png"},
+  {"thlwName": "MOON", "thwDescribe": "The moon shines in the night sky.", "thlwAudioDescribe": "moon_describe.mp3", "thlwAudioL": "moon_l.mp3", "thlwAudioQ": "moon_q.mp3", "thlwImage": "moon.png"},
+  {"thlwName": "STAR", "thwDescribe": "Stars are tiny lights far away in the sky.", "thlwAudioDescribe": "star_describe.mp3", "thlwAudioL": "star_l.mp3", "thlwAudioQ": "star_q.mp3", "thlwImage": "star.png"},
+  {"thlwName": "COIN", "thwDescribe": "A coin is a small round piece of metal for buying things.", "thlwAudioDescribe": "coin_describe.mp3", "thlwAudioL": "coin_l.mp3", "thlwAudioQ": "coin_q.mp3", "thlwImage": "coin.png"},
+  {"thlwName": "DOOR", "thwDescribe": "A door opens to go in or out of a room.", "thlwAudioDescribe": "door_describe.mp3", "thlwAudioL": "door_l.mp3", "thlwAudioQ": "door_q.mp3", "thlwImage": "door.png"},
+  {"thlwName": "MICE", "thwDescribe": "Mice are tiny animals that love cheese.", "thlwAudioDescribe": "mice_describe.mp3", "thlwAudioL": "mice_l.mp3", "thlwAudioQ": "mice_q.mp3", "thlwImage": "mice.png"},
+  {"thlwName": "FROG", "thwDescribe": "A frog is a little animal that hops and lives near water.", "thlwAudioDescribe": "frog_describe.mp3", "thlwAudioL": "frog_l.mp3", "thlwAudioQ": "frog_q.mp3", "thlwImage": "frog.png"},
+  {"thlwName": "LION", "thwDescribe": "A lion is a big, strong wild animal that roars.", "thlwAudioDescribe": "lion_describe.mp3", "thlwAudioL": "lion_l.mp3", "thlwAudioQ": "lion_q.mp3", "thlwImage": "lion.png"},
+  {"thlwName": "BEAR", "thwDescribe": "A bear is a wild large animal with thick fur that likes honey.", "thlwAudioDescribe": "bear_describe.mp3", "thlwAudioL": "bear_l.mp3", "thlwAudioQ": "bear_q.mp3", "thlwImage": "bear.png"},
+  {"thlwName": "FIRE", "thwDescribe": "Fire gives heat and light, but can be dangerous.", "thlwAudioDescribe": "fire_describe.mp3", "thlwAudioL": "fire_l.mp3", "thlwAudioQ": "fire_q.mp3", "thlwImage": "fire.png"}
+]

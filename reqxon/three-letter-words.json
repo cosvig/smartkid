@@ -1,0 +1,17 @@
+[
+  {"thlwName": "CAT", "thwDescribe": "A cat is a small, furry pet that likes to play and purr.", "thlwAudioDescribe": "cat_describe.mp3", "thlwAudioL": "cat_l.mp3", "thlwAudioQ": "cat_q.mp3", "thlwImage": "cat.png"},
+  {"thlwName": "DOG", "thwDescribe": "A dog is a friendly animal that loves to run, play, and wag its tail.", "thlwAudioDescribe": "dog_describe.mp3", "thlwAudioL": "dog_l.mp3", "thlwAudioQ": "dog_q.mp3", "thlwImage": "dog.png"},
+  {"thlwName": "SUN", "thwDescribe": "The sun is a bright star in the sky that gives us light in the day.", "thlwAudioDescribe": "sun_describe.mp3", "thlwAudioL": "sun_l.mp3", "thlwAudioQ": "sun_q.mp3", "thlwImage": "sun.png"},
+  {"thlwName": "MOM", "thwDescribe": "A mom is the special lady who loves you and takes care of you.", "thlwAudioDescribe": "mom_describe.mp3", "thlwAudioL": "mom_l.mp3", "thlwAudioQ": "mom_q.mp3", "thlwImage": "mom.png"},
+  {"thlwName": "DAD", "thwDescribe": "A dad is the special man who cares for you and keeps you safe.", "thlwAudioDescribe": "dad_describe.mp3", "thlwAudioL": "dad_l.mp3", "thlwAudioQ": "dad_q.mp3", "thlwImage": "dad.png"},
+  {"thlwName": "BUS", "thwDescribe": "A bus is a big vehicle that carries many people to places.", "thlwAudioDescribe": "bus_describe.mp3", "thlwAudioL": "bus_l.mp3", "thlwAudioQ": "bus_q.mp3", "thlwImage": "bus.png"},
+  {"thlwName": "CAR", "thwDescribe": "A car is a vehicle that families use to travel from one place to another.", "thlwAudioDescribe": "car_describe.mp3", "thlwAudioL": "car_l.mp3", "thlwAudioQ": "car_q.mp3", "thlwImage": "car.png"},
+  {"thlwName": "HAT", "thwDescribe": "A hat is something you wear on your head to stay warm or look nice.", "thlwAudioDescribe": "hat_describe.mp3", "thlwAudioL": "hat_l.mp3", "thlwAudioQ": "hat_q.mp3", "thlwImage": "hat.png"},
+  {"thlwName": "MAP", "thwDescribe": "A map is a picture that helps you find places.", "thlwAudioDescribe": "map_describe.mp3", "thlwAudioL": "map_l.mp3", "thlwAudioQ": "map_q.mp3", "thlwImage": "map.png"},
+  {"thlwName": "PEN", "thwDescribe": "A pen is something you use to write or draw.", "thlwAudioDescribe": "pen_describe.mp3", "thlwAudioL": "pen_l.mp3", "thlwAudioQ": "pen_q.mp3", "thlwImage": "pen.png"},
+  {"thlwName": "BED", "thwDescribe": "A bed is where you lie down to rest and sleep.", "thlwAudioDescribe": "bed_describe.mp3", "thlwAudioL": "bed_l.mp3", "thlwAudioQ": "bed_q.mp3", "thlwImage": "bed.png"},
+  {"thlwName": "JAR", "thwDescribe": "A jar is a container used to hold things like cookies.", "thlwAudioDescribe": "jar_describe.mp3", "thlwAudioL": "jar_l.mp3", "thlwAudioQ": "jar_q.mp3", "thlwImage": "jar.png"},
+  {"thlwName": "KEY", "thwDescribe": "A key is a small tool used to open doors or locks.", "thlwAudioDescribe": "key_describe.mp3", "thlwAudioL": "key_l.mp3", "thlwAudioQ": "key_q.mp3", "thlwImage": "key.png"},
+  {"thlwName": "PIG", "thwDescribe": "A pig is a farm animal that likes to roll in the mud.", "thlwAudioDescribe": "pig_describe.mp3", "thlwAudioL": "pig_l.mp3", "thlwAudioQ": "pig_q.mp3", "thlwImage": "pig.png"},
+  {"thlwName": "OIL", "thwDescribe": "An oil is a slippery liquid used for cooking or making machines work smoothly.", "thlwAudioDescribe": "oil_describe.mp3", "thlwAudioL": "oil_l.mp3", "thlwAudioQ": "oil_q.mp3", "thlwImage": "oil.png"}
+]
