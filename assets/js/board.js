@@ -653,6 +653,7 @@ function challengeQuesiontAudo(){
 
 /*****************************HELPER FUNCTIONS *************************/
 function globalAudioFunc(audioSound) {
+	stopAllAudio();
     // Check if audio is in cache
     if (audioCache.has(audioSound)) {
         const cachedAudio = audioCache.get(audioSound);
@@ -846,4 +847,5 @@ function randomAnimLetters(){
 function stringToArray(str) {
     return str.split('');
 }
+
 
