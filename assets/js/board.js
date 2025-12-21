@@ -1,8 +1,9 @@
 import { alphabet, preLoadMergeSet, currentMergeSet, challengeOnlyArr, shuffle, deseydicing, currentBatchIndex, increaseCurrentBatchIndex, constantArrayNumber, pgnConst } from './serve.js';
 
 
-var audioCache = new Map(); // Cache for preloaded audio
-var preloadedAudios = new Set(); // Track preloaded audio objects
+var lastAttemptedAudio = null; // Stores the file name to retry
+var networkModal = null; // Will hold the Bootstrap modal instance
+networkModal = new bootstrap.Modal(document.getElementById('networkErrorModal'));
 
 var activeAudioList = [];
 var statsCounter = 0;
@@ -69,7 +70,7 @@ var standcon = [
 {"standconWord":"end_lesson", "standconDescript":"We have come to the end of this lesson. Please leave us a feed back. Thank You.", "standconAudio":"end_lesson.mp3"}
 ];
 
-function getAllAudioFiles() {
+/*function getAllAudioFiles() {
     const audioFiles = new Set();
     
     // Collect from tfletterwords
@@ -169,7 +170,7 @@ export async function preloadAllAudios() {
         document.getElementById('lessonContent').style.display = '';
         document.body.classList.add('loaded');
     }
-}
+}*/
 export function threeFourLWBoard(){
 	let lessonPic = document.getElementById("lessonPic");
 	let lessonW = document.getElementById("lessonW");
@@ -672,71 +673,80 @@ function challengeQuesiontAudo(){
 
 
 /*****************************HELPER FUNCTIONS *************************/
-function globalAudioFunc(audioSound) {
-	stopAllAudio()
-    // Check if audio is in cache
-    if (audioCache.has(audioSound)) {
-        const cachedAudio = audioCache.get(audioSound);
-        
-        // Clone the audio to allow multiple simultaneous plays
-        const audio = cachedAudio.cloneNode();
-        audio.currentTime = 0;
-        
-        activeAudioList.push(audio);
-        
-        audio.addEventListener('ended', () => {
-            const index = activeAudioList.indexOf(audio);
-            if (index !== -1) activeAudioList.splice(index, 1);
-            startLessong();
-        });
-        
-        audio.addEventListener('error', (e) => {
-            const index = activeAudioList.indexOf(audio);
-            if (index !== -1) activeAudioList.splice(index, 1);
-            console.error('Audio playback error:', e);
-            startLessong();
-        });
-        
-        audio.play().catch(err => {
-            console.error('Play failed:', err);
-            const index = activeAudioList.indexOf(audio);
-            if (index !== -1) activeAudioList.splice(index, 1);
-            startLessong();
-        });
-        
-        return audio;
+function retryLastAudio() {
+    if (lastAttemptedAudio) {
+        console.log("Retrying audio:", lastAttemptedAudio);
+        // Hide modal (if open) and call globalAudioFunc again
+        networkModal.hide(); 
+        globalAudioFunc(lastAttemptedAudio); 
     }
+}
+function globalAudioFunc(audioSound) {
+    // 1. Validation: If undefined/null, handle gracefully (or throw error)
+    if (!audioSound) {
+        console.error("Audio source is undefined.");
+        // Decide logic here: Do you want to skip if file is missing, or break?
+        // Assuming we treat missing file as an error -> show modal
+        lastAttemptedAudio = audioSound;
+        networkModal.show();
+        return;
+    }
+
+    // Update the last attempted audio for retry logic
+    lastAttemptedAudio = audioSound;
     
-    // Fallback: create new audio if not in cache
-    console.warn(`Audio "${audioSound}" not in cache, loading on demand`);
-    let audio = new Audio(`./ledphoney/${audioSound}`);
+    // Create Audio Object
+    let audio = new Audio("./ledphoney/" + audioSound);
     activeAudioList.push(audio);
-    
+
+    // 2. Success Handler (Ended)
     audio.addEventListener('ended', () => {
         const index = activeAudioList.indexOf(audio);
         if (index !== -1) activeAudioList.splice(index, 1);
+        
+        // Clear last attempt on success
+        lastAttemptedAudio = null; 
+        
+        // Move to next stage
         startLessong();
     });
-    
+
+    // 3. Error Handler (Network/Loading issues)
     audio.addEventListener('error', (e) => {
-        const index = activeAudioList.indexOf(audio);
-        if (index !== -1) activeAudioList.splice(index, 1);
-        console.error('Audio error:', e);
-        startLessong();
+        console.error('Audio load error:', e);
+        handleAudioFailure(audio);
     });
-    
-    audio.play().catch(err => {
-        console.error('Play failed:', err);
-        const index = activeAudioList.indexOf(audio);
-        if (index !== -1) activeAudioList.splice(index, 1);
-        startLessong();
-    });
-    
-    return audio;
+
+    // 4. Play Attempt
+    // We explicitly check if play() fails (e.g., autoplay blocks or network during load)
+    var playPromise = audio.play();
+
+    if (playPromise !== undefined) {
+        playPromise.catch(error => {
+            console.error('Play execution failed:', error);
+            handleAudioFailure(audio);
+        });
+    }
 }
 
+// --- Helper to handle failures ---
+function handleAudioFailure(audioInstance) {
+    // Remove the broken audio instance from the active list
+    const index = activeAudioList.indexOf(audioInstance);
+    if (index !== -1) activeAudioList.splice(index, 1);
+
+    // Do NOT call startLessong(). Instead, show the modal.
+    console.log("Pausing execution. Waiting for retry...");
+    if (networkModal) {
+        networkModal.show();
+    } else {
+        // Fallback if DOM isn't ready or modal missing
+        alert("Network Error: Audio failed to load. Please check connection.");
+    }
+}
+
+// --- Your existing Stop Function (Unchanged) ---
 function stopAllAudio() {
-    // Stop DOM audio/video elements
     const mediaElements = document.querySelectorAll('audio, video');
     mediaElements.forEach(element => {
         if (!element.paused) {
@@ -745,62 +755,25 @@ function stopAllAudio() {
         }
     });
 
-    // Stop all tracked Audio objects
     activeAudioList.forEach(audio => {
         if (!audio.paused) {
             audio.pause();
             audio.currentTime = 0;
         }
     });
-
-    // Clear the tracking list
     activeAudioList = [];
 }
-/*function globalAudioFunc(audioSound){
-	let audio = new Audio("./ledphoney/"+audioSound);
-	activeAudioList.push(audio);
-	audio.addEventListener('ended', () => {
-		const index = activeAudioList.indexOf(audio);
-        if (index !== -1) activeAudioList.splice(index, 1);
-		startLessong();
-	});
-	audio.addEventListener('error', (e) => {
-		const index = activeAudioList.indexOf(audio);
-        if (index !== -1) activeAudioList.splice(index, 1);
-		console.error('Audio error:', e);
-		startLessong();
-	});
-	audio.play()
-	.catch(err => {
-	  // play() returns a promise – catch rejections (e.g., autoplay blocked)
-	  console.error('Play failed:', err);
-	  const index = activeAudioList.indexOf(audio);
-	  if (index !== -1) activeAudioList.splice(index, 1);
-		startLessong();
-	});
-}
 
-function stopAllAudio() {
-    // Stop DOM audio/video elements
-    const mediaElements = document.querySelectorAll('audio, video');
-    mediaElements.forEach(element => {
-        if (!element.paused) {
-            element.pause();
-            element.currentTime = 0;
-        }
-    });
+window.addEventListener('online', () => {
+    console.log("Back online! Retrying...");
+    if (lastAttemptedAudio) {
+        // Optional: Add a small delay to ensure connection is stable
+        setTimeout(() => {
+            retryLastAudio();
+        }, 1000); 
+    }
+});
 
-    // Stop all tracked Audio objects
-    activeAudioList.forEach(audio => {
-        if (!audio.paused) {
-            audio.pause();
-            audio.currentTime = 0;
-        }
-    });
-
-    // Clear the tracking list
-    activeAudioList = [];
-}*/
 
 function resizingLessonLetters(){
 	let viewportWidth = window.innerWidth;
@@ -868,3 +841,4 @@ function stringToArray(str) {
     return str.split('');
 }
 
+window.retryLastAudio = retryLastAudio;

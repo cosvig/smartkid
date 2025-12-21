@@ -1,5 +1,5 @@
 import { showTutChalPage } from './main.js';
-import { threeFourLWBoard, startLessong, endLessonClose, preloadAllAudios } from './board.js';
+import { threeFourLWBoard, startLessong, endLessonClose } from './board.js';
 
 //const json no changes made
 export var threeLetterWords = '';
@@ -66,8 +66,9 @@ function slicingandsetting(){
 	shuffle(currentMergeSet);
 	console.log(currentMergeSet)
 	challengeOnlyArr = [...currentMergeSet];
-	document.getElementById('pageLoader').style.display = "";
-	preloadAllAudios();
+	//document.getElementById('pageLoader').style.display = "";
+	threeFourLWBoard();
+	//preloadAllAudios();
 }
 
 export function deseydicing(){
