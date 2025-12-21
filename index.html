@@ -125,7 +125,7 @@
                         <div class="stat-icon">
                             <i class="fas fa-sun"></i>
                         </div>
-                        <h3 class="stat-title light">Start 5 and 6 Letter Words</h3>
+                        <h3 class="stat-title light">Upcoming 5 and 6 Letter Words</h3>
                     </div>
                 </div>
                 
@@ -135,7 +135,7 @@
                         <div class="stat-icon">
                             <i class="fas fa-sun"></i>
                         </div>
-                        <h3 class="stat-title light">Start 3 to 6 Letter Words Combined</h3>
+                        <h3 class="stat-title light">Upcoming 3 to 6 Letter Words Combined</h3>
                     </div>
                 </div>
                 
@@ -145,7 +145,7 @@
                         <div class="stat-icon">
                             <i class="fas fa-sun"></i>
                         </div>
-                        <h3 class="stat-title">Start general Letter Words (Pro)</h3>
+                        <h3 class="stat-title">Upcoming general Letter Words (Pro)</h3>
                     </div>
                 </div>
             </div>
@@ -156,6 +156,28 @@
 	
 	
 	</section>
+	
+	<div class="modal fade" id="networkErrorModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="networkErrorModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-danger" id="networkErrorModalLabel">Oops! Connection Issue</h5>
+      </div>
+      <div class="modal-body">
+        <p>It seems your connection is a bit slow or interrupted.</p>
+        <p class="small text-muted">Please check your network settings and reconnect so we can keep things running smoothly.</p>
+        <div class="d-flex justify-content-center">
+            <div class="spinner-border text-primary" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+      </div>
+      <!--<div class="modal-footer">
+        <button type="button" class="btn btn-primary" onclick="retryLastAudio()">Retry Now</button>
+      </div>-->
+    </div>
+  </div>
+</div>
     
     <!-- Bootstrap 5.3.3 JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
