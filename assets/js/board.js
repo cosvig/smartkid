@@ -728,13 +728,15 @@ function challengeNoLQuesiontAudo(){
 async function retryLastAudio() {
     if (lastAttemptedAudio) {
         console.log("Retrying audio:", lastAttemptedAudio);
-
-        globalAudioFunc(lastAttemptedAudio);
-
-        // Check if internet is back
+		
+		 // Check if internet is back
         if (await isInternetAvailable()) {
             networkModal.hide();
         }
+
+        globalAudioFunc(lastAttemptedAudio);
+
+       
     }
 }
 function globalAudioFunc(audioSound) {
