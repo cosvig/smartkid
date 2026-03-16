@@ -731,10 +731,10 @@ function retryLastAudio() {
         
         globalAudioFunc(lastAttemptedAudio); 
 		// Hide modal (if open) and call globalAudioFunc again
-		let currentlyonline = workbackonline();
-		if (currentlyonline == 0) {
+		window.addEventListener('online', () => {
 			networkModal.hide();
-		}
+		});
+		
 		
     }
 }
@@ -899,12 +899,6 @@ function stringToArray(str) {
     return str.split('');
 }
 
-function workbackonline() {
-    if (navigator.onLine) {
-        return 0;
-    }else{
-        return 1;
-    }
-}
+
 
 window.retryLastAudio = retryLastAudio;
