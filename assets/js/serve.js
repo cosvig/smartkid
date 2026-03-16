@@ -7,6 +7,8 @@ export var fourLetterWords = '';
 var fiveLetterWords = '';
 var sixLetterWords = '';
 
+export var challengesNoLessonMerge = '';
+
 //new set created
 export var alphabet = '';
 export var setconstThreeLW = '';
@@ -14,7 +16,7 @@ export var setconstFourLW = '';
 
 export var currentThreeLW = '';
 export var currentFourLW = '';
-export var preLoadMergeSet = ''
+//export var preLoadMergeSet = ''
 export var currentMergeSet = '';
 export var challengeOnlyArr = '';
 
@@ -50,7 +52,7 @@ function slicingandsetting(){
 	shuffle(setconstFourLW);
 	
 	
-	preLoadMergeSet = [...setconstThreeLW,  ...setconstFourLW]
+	//preLoadMergeSet = [...setconstThreeLW,  ...setconstFourLW]
 	//currentThreeLW = setconstThreeLW.slice(0, 1);
 	//currentFourLW = setconstFourLW.slice(0, 1);
 	
@@ -92,6 +94,14 @@ export function increaseCurrentBatchIndex(){
 		return;
 	}
 	deseydicing();
+}
+
+
+export function takechallengesNoLMerge(){
+	challengesNoLessonMerge = [...setconstThreeLW,  ...setconstFourLW];
+	shuffle(challengesNoLessonMerge);
+	shuffle(challengesNoLessonMerge);
+	startLessong();
 }
 
 function alphetArrConstruct(){
