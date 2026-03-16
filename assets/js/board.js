@@ -729,7 +729,7 @@ function retryLastAudio() {
     if (lastAttemptedAudio) {
         console.log("Retrying audio:", lastAttemptedAudio);
         // Hide modal (if open) and call globalAudioFunc again
-        networkModal.hide(); 
+        //networkModal.hide(); 
         globalAudioFunc(lastAttemptedAudio); 
     }
 }
