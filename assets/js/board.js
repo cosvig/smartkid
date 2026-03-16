@@ -902,7 +902,7 @@ function stringToArray(str) {
 
 async function isInternetAvailable() {
   try {
-    const response = await fetch("https://www.google.com/favicon.ico", {
+    const response = await fetch("https://smartme.pages.dev//pixagime/sun.png", {
       method: "HEAD",
       cache: "no-store"
     });
