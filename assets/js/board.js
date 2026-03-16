@@ -728,9 +728,14 @@ function challengeNoLQuesiontAudo(){
 function retryLastAudio() {
     if (lastAttemptedAudio) {
         console.log("Retrying audio:", lastAttemptedAudio);
-        // Hide modal (if open) and call globalAudioFunc again
-        //networkModal.hide(); 
+        
         globalAudioFunc(lastAttemptedAudio); 
+		// Hide modal (if open) and call globalAudioFunc again
+		let currentlyonline = workbackonline();
+		if (currentlyonline == 0) {
+			networkModal.hide();
+		}
+		
     }
 }
 function globalAudioFunc(audioSound) {
@@ -892,6 +897,14 @@ function randomAnimLetters(){
 
 function stringToArray(str) {
     return str.split('');
+}
+
+function workbackonline() {
+    if (navigator.onLine) {
+        return 0;
+    }else{
+        return 1;
+    }
 }
 
 window.retryLastAudio = retryLastAudio;
