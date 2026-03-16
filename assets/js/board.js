@@ -725,17 +725,16 @@ function challengeNoLQuesiontAudo(){
 
 
 /*****************************HELPER FUNCTIONS *************************/
-function retryLastAudio() {
+async function retryLastAudio() {
     if (lastAttemptedAudio) {
         console.log("Retrying audio:", lastAttemptedAudio);
-        
-        globalAudioFunc(lastAttemptedAudio); 
-		// Hide modal (if open) and call globalAudioFunc again
-		window.addEventListener('online', () => {
-			networkModal.hide();
-		});
-		
-		
+
+        globalAudioFunc(lastAttemptedAudio);
+
+        // Check if internet is back
+        if (await isInternetAvailable()) {
+            networkModal.hide();
+        }
     }
 }
 function globalAudioFunc(audioSound) {
@@ -899,6 +898,18 @@ function stringToArray(str) {
     return str.split('');
 }
 
+async function isInternetAvailable() {
+  try {
+    const response = await fetch("https://www.google.com/favicon.ico", {
+      method: "HEAD",
+      cache: "no-store"
+    });
+
+    return response.ok;
+  } catch (error) {
+    return false;
+  }
+}
 
 
 window.retryLastAudio = retryLastAudio;
