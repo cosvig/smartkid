@@ -1,4 +1,4 @@
-import { alphabet, preLoadMergeSet, currentMergeSet, challengeOnlyArr, shuffle, deseydicing, currentBatchIndex, increaseCurrentBatchIndex, constantArrayNumber, pgnConst } from './serve.js';
+import { alphabet, currentMergeSet, challengeOnlyArr, shuffle, deseydicing, currentBatchIndex, increaseCurrentBatchIndex, constantArrayNumber, pgnConst, challengesNoLessonMerge, takechallengesNoLMerge } from './serve.js';
 
 
 var lastAttemptedAudio = null; // Stores the file name to retry
@@ -13,7 +13,7 @@ var endOfLessonSet = false;
 
 let repeatdiscribeCount = 0;
 let repeattutCount = 0;
-let repeattutAgainTimes = 3; //Do not reset to 0.
+let repeattutAgainTimes = 2; //Do not reset to 0.
 let challengeCount = 0;
 let againCountRepeat = "no";
 let audioPlayStopControl = "play";
@@ -36,10 +36,12 @@ function resetPlayProps(){
 }
 
 //Overall Challenges
-
 var challengeOnlyCounter = 0;
-
 let overallChallengeProp = 0;
+
+//Challenges No Lesson
+var ChallengesNoL = false;
+var challengesNoLCounter = 0;
 
 function resetOverallChallenge(){
 	audioPlayStopControl = "play";
@@ -57,6 +59,9 @@ function resetForNewWordSets(){
 }
 
 
+
+
+
 var standcon = [
 {"standconWord":"welcome", "standconDescript":"Welcome. Let's get straight to the fun part.", "standconAudio":"welcome.mp3"},
 {"standconWord":"again", "standconDescript":"Again", "standconAudio":"again.mp3"},
@@ -70,107 +75,6 @@ var standcon = [
 {"standconWord":"end_lesson", "standconDescript":"We have come to the end of this lesson. Please leave us a feed back. Thank You.", "standconAudio":"end_lesson.mp3"}
 ];
 
-/*function getAllAudioFiles() {
-    const audioFiles = new Set();
-    
-    // Collect from tfletterwords
-    preLoadMergeSet.forEach(word => {
-        if (word.thlwAudioDescribe) audioFiles.add(word.thlwAudioDescribe);
-        if (word.thlwAudioL) audioFiles.add(word.thlwAudioL);
-        if (word.thlwAudioQ) audioFiles.add(word.thlwAudioQ);
-    });
-    
-    // Collect from standcon
-    standcon.forEach(phrase => {
-        if (phrase.standconAudio) audioFiles.add(phrase.standconAudio);
-    });
-    //console.log(audioFiles)
-    return Array.from(audioFiles);
-	
-}
-
-// Function to preload all audio files
-export async function preloadAllAudios() {
-    const audioFiles = getAllAudioFiles();
-    const totalFiles = audioFiles.length;
-    let loadedCount = 0;
-    
-    // Update progress display
-    function updateProgress() {
-        loadedCount++;
-        const percentage = Math.round((loadedCount / totalFiles) * 100);
-        document.getElementById('progressFill').style.width = `${percentage}%`;
-        document.getElementById('progressText').textContent = `${percentage}%`;
-    }
-    
-    // Create promises for each audio file
-    const preloadPromises = audioFiles.map(filename => {
-        return new Promise((resolve, reject) => {
-            const audio = new Audio();
-            
-            // Set up event listeners
-            audio.addEventListener('canplaythrough', () => {
-                // Store in cache
-                audioCache.set(filename, audio);
-                preloadedAudios.add(audio);
-                updateProgress();
-                resolve({ filename, success: true });
-            }, { once: true });
-            
-            audio.addEventListener('error', (e) => {
-                console.error(`Failed to load audio: ${filename}`, e);
-                // Even if it fails, we'll resolve to continue
-                updateProgress();
-                resolve({ filename, success: false, error: e });
-            }, { once: true });
-            
-            // Set source and start loading
-            audio.src = `./ledphoney/${filename}`;
-            audio.preload = 'auto';
-            audio.load();
-            
-            // Fallback: resolve after timeout even if events don't fire
-            setTimeout(() => {
-                if (!audioCache.has(filename)) {
-                    console.warn(`Timeout loading audio: ${filename}`);
-                    updateProgress();
-                    resolve({ filename, success: false, error: 'timeout' });
-                }
-            }, 10000); // 10 second timeout
-        });
-    });
-    
-    // Wait for all preloads to complete
-    try {
-        const results = await Promise.all(preloadPromises);
-        
-        // Log results
-        const successful = results.filter(r => r.success).length;
-        const failed = results.filter(r => !r.success).length;
-        
-        console.log(`Audio preloading complete: ${successful} loaded, ${failed} failed`);
-        
-        // Show content and hide loader
-		threeFourLWBoard();
-        document.getElementById('lessonContent').style.display = '';
-        document.body.classList.add('loaded');
-        
-        // Remove loader from DOM after animation
-        setTimeout(() => {
-            const loader = document.getElementById('pageLoader');
-            if (loader) {
-                loader.style.display = 'none';
-            }
-        }, 500);
-        
-    } catch (error) {
-        console.error('Error during audio preloading:', error);
-        // Still show content even if some audios failed
-		threeFourLWBoard();
-        document.getElementById('lessonContent').style.display = '';
-        document.body.classList.add('loaded');
-    }
-}*/
 export function threeFourLWBoard(){
 	let lessonPic = document.getElementById("lessonPic");
 	let lessonW = document.getElementById("lessonW");
@@ -178,6 +82,16 @@ export function threeFourLWBoard(){
 
 	lessonPic.innerHTML = `<img width="300px" height="200px" src="./pixagime/${currentMergeSet[0].thlwImage}"  draggable="false">`;
 	lessonWDC.innerHTML = currentMergeSet[0].thwDescribe;
+	
+	document.getElementById("takingchallenges").addEventListener("click", function(event) { 
+	ChallengesNoL = true;
+	resetOverallChallenge()
+	statsCounter = currentMergeSet.length
+	document.getElementById("takingchallenges").style.display = 'none';
+	document.getElementById("rboard").style.display = 'none';
+	takechallengesNoLMerge();
+	//startLessong();
+});
 	
 	clickingAgain()
 	//statsCounter = currentMergeSet.length;
@@ -198,7 +112,6 @@ function clickingAgain(){
 		//console.log(index + 2); // +1 because index is 0-based
 	  });
 	});
-
 }
 export function endLessonClose(){
 	endLessonAudio();
@@ -300,9 +213,26 @@ export function startLessong(){
 			overallChallengeAudio();
 			return;
 		}
+		
+		if(ChallengesNoL == true){
+			let challengeNoLsLenght = challengesNoLessonMerge.length;
+			if(challengesNoLCounter != challengeNoLsLenght){
+			if(challengeCount == 0 && audioPlayStopControl == "play"){ //lets take a challenge
+				challengeCount = 1;
+				audioPlayStopControl = "stop";
+				gotochallengeNoLP();
+				setTimeout(() => {
+					document.getElementById("lessonW").innerHTML = '';
+					challengeNoLQuesiontAudo()
+				}, 100);
+			}
+			}else{
+				endLessonClose()
+			}
+			
+			return;
+		}
 		let challengeOnlyArrLenght = challengeOnlyArr.length;
-		//console.log("challengeOnlyArr", challengeOnlyArr)
-		//console.log("challengeOnlyArrLenght", challengeOnlyArrLenght)
 		if(challengeOnlyCounter != challengeOnlyArrLenght){
 			if(challengeCount == 0 && audioPlayStopControl == "play"){ //lets take a challenge
 				challengeCount = 1;
@@ -594,6 +524,124 @@ function gotochallengeOnlyP(){
 	
 }
 
+function gotochallengeNoLP(){
+	let lessonPic = document.getElementById("lessonPic");
+	let clearLessonW = document.getElementById("clearLessonW");
+	let lessonW = document.getElementById("lessonW");
+	let lessonWDC = document.getElementById("lessonWDC");
+	let cellWordPick = document.getElementById("cellWordPick");
+	
+
+	lessonPic.innerHTML = `<img width="100x" height="67px" src="./pixagime/${challengesNoLessonMerge[challengesNoLCounter].thlwImage}"  draggable="false">`;
+	lessonW.innerHTML = '';
+	lessonWDC.innerHTML = '';
+	
+	let setNewalphabet = [...alphabet];
+	//console.log("setNewalphabet", setNewalphabet)
+	shuffle(setNewalphabet)
+	
+	let slicedSetNewalphabet = '';
+
+	
+	let alphset = challengesNoLessonMerge[challengesNoLCounter].thlwName;
+	let alphsetLength = alphset.length;
+	let alphsetArray = stringToArray(alphset)
+	
+	if(alphsetLength == 3){
+		slicedSetNewalphabet = setNewalphabet.splice(0, 3);
+	}else if(alphsetLength == 4){
+		slicedSetNewalphabet = setNewalphabet.splice(0, 2);
+	}
+	shuffle(slicedSetNewalphabet)
+	let combineAlphals = [...slicedSetNewalphabet, ...alphsetArray];
+	shuffle(combineAlphals)
+	
+
+	let remAlphalsArr = []
+	let remAlphalsVa = '';
+
+	rearrangeCSW();
+	
+	function rearrangeCSW(){
+		
+		combineAlphals.forEach(function(item, index) {
+			let cellwordDiv = document.createElement("div");
+			
+			let cellwordP = document.createElement("p");
+			cellwordP.innerHTML = item;
+			
+			cellwordDiv.addEventListener("click", function() {
+				remAlphalsArr.push(cellwordP.innerText)
+				lessonW.innerHTML += cellwordP.innerText;
+				remAlphalsVa += cellwordP.innerText;
+				resizingLessonLetters()
+				cellwordDiv.remove();
+				addingClearButton()
+				stopAllAudio()
+				
+				let remAlphalsVaLenght = remAlphalsVa.length;
+				if(alphsetLength == remAlphalsVaLenght){
+					checkSpellResult()
+				}
+			});
+			
+			cellwordDiv.appendChild(cellwordP);
+			cellWordPick.appendChild(cellwordDiv);
+		});
+		randomAnimLetters();
+	}
+	function addingClearButton(){
+		clearLessonW.classList.add('clear-lesson-row')
+		clearLessonW.innerHTML = `<div class="clear-lesson-col">X</div>`;
+		clearLessonW.addEventListener("click", function() {
+			clearingSpelledWords()
+		});
+	}
+	function clearingSpelledWords(){
+		remAlphalsArr = [];
+		lessonW.innerHTML = '';
+		remAlphalsVa = '';
+		cellWordPick.innerHTML = '';
+		
+		clearLessonW.classList.remove('clear-lesson-row');
+		clearLessonW.innerHTML = '';
+		rearrangeCSW();
+	}
+	function checkSpellResult(){
+		cellWordPick.innerHTML = '';
+		clearLessonW.classList.remove('clear-lesson-row');
+		clearLessonW.innerHTML = '';
+		if(alphset == remAlphalsVa){
+			
+			stopAllAudio();
+			//console.log("correct")
+			realClearingToConLesson()
+			challengesNoLCounter++;
+			challCorrectTone = 1;
+			startLessong()
+		}else{
+			stopAllAudio()
+			//console.log("wrong")
+			realClearingToConLesson()
+			challWrongTone = 1;
+			startLessong()
+		}
+		
+	}
+	
+	function realClearingToConLesson(){
+		remAlphalsArr = [];
+		//lessonW.innerHTML = '';
+		remAlphalsVa = '';
+		cellWordPick.innerHTML = '';
+		clearLessonW.classList.remove('clear-lesson-row');
+		clearLessonW.innerHTML = '';
+		
+		resetOverallChallenge()
+	}
+	
+}
+
 /*****************************ALL AUDIOS *************************/
 function welcomeAudio(){
 	let njtz = standcon.find(ukcl => ukcl.standconWord == "welcome"); 
@@ -662,12 +710,16 @@ function endLessonAudio(){
 	globalAudioFunc(standconAudio)
 }
 
-
-
 function challengeQuesiontAudo(){
 	let standconAudio = challengeOnlyArr[challengeOnlyCounter].thlwAudioQ;
 	globalAudioFunc(standconAudio)
 }
+
+function challengeNoLQuesiontAudo(){
+	let standconAudio = challengesNoLessonMerge[challengesNoLCounter].thlwAudioQ;
+	globalAudioFunc(standconAudio)
+}
+
 
 
 
@@ -682,6 +734,7 @@ function retryLastAudio() {
     }
 }
 function globalAudioFunc(audioSound) {
+	stopAllAudio();
     // 1. Validation: If undefined/null, handle gracefully (or throw error)
     if (!audioSound) {
         console.error("Audio source is undefined.");
