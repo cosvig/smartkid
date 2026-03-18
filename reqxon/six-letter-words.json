@@ -1,0 +1,17 @@
+[
+{"thlwName":"BANANA", "thwDescribe":"A banana is a long, yellow fruit you can peel and eat.", "thlwAudioDescribe":"banana_describe.mp3", "thlwAudioL":"banana_l.mp3", "thlwAudioQ":"banana_q.mp3", "thlwImage":"banana.png"},
+{"thlwName":"ORANGE", "thwDescribe":"An orange is a round fruit that is sweet and juicy.", "thlwAudioDescribe":"orange_describe.mp3", "thlwAudioL":"orange_l.mp3", "thlwAudioQ":"orange_q.mp3", "thlwImage":"orange.png"},
+{"thlwName":"GARDEN", "thwDescribe":"A garden is a place where flowers, vegetables, and trees grow.", "thlwAudioDescribe":"garden_describe.mp3", "thlwAudioL":"garden_l.mp3", "thlwAudioQ":"garden_q.mp3", "thlwImage":"garden.png"},
+{"thlwName":"SCHOOL", "thwDescribe":"A school is a building where children learn together.", "thlwAudioDescribe":"school_describe.mp3", "thlwAudioL":"school_l.mp3", "thlwAudioQ":"school_q.mp3", "thlwImage":"school.png"},
+{"thlwName":"PENCIL", "thwDescribe":"A pencil is a wooden stick used to write or draw.", "thlwAudioDescribe":"pencil_describe.mp3", "thlwAudioL":"pencil_l.mp3", "thlwAudioQ":"pencil_q.mp3", "thlwImage":"pencil.png"},
+{"thlwName":"COOKIE", "thwDescribe":"A cookie is a small, sweet baked treat you can eat.", "thlwAudioDescribe":"cookie_describe.mp3", "thlwAudioL":"cookie_l.mp3", "thlwAudioQ":"cookie_q.mp3", "thlwImage":"cookie.png"},
+{"thlwName":"BASKET", "thwDescribe":"A basket is a container you can use to carry clothes,  fruits or household items.", "thlwAudioDescribe":"basket_describe.mp3", "thlwAudioL":"basket_l.mp3", "thlwAudioQ":"basket_q.mp3", "thlwImage":"basket.png"},
+{"thlwName":"BOTTLE", "thwDescribe":"A bottle holds water, juice, or milk so you can drink it later.", "thlwAudioDescribe":"bottle_describe.mp3", "thlwAudioL":"bottle_l.mp3", "thlwAudioQ":"bottle_q.mp3", "thlwImage":"bottle.png"},
+{"thlwName":"MONKEY", "thwDescribe":"A monkey swings on trees and loves to eat bananas.", "thlwAudioDescribe":"monkey_describe.mp3", "thlwAudioL":"monkey_l.mp3", "thlwAudioQ":"monkey_q.mp3", "thlwImage":"monkey.png"},
+{"thlwName":"DRAGON", "thwDescribe":"A dragon is a mythical creature that breathes fire and flies.", "thlwAudioDescribe":"dragon_describe.mp3", "thlwAudioL":"dragon_l.mp3", "thlwAudioQ":"dragon_q.mp3", "thlwImage":"dragon.png"},
+{"thlwName":"FRIEND", "thwDescribe":"A friend is someone you like to play and share with.", "thlwAudioDescribe":"friend_describe.mp3", "thlwAudioL":"friend_l.mp3", "thlwAudioQ":"friend_q.mp3", "thlwImage":"friend.png"},
+{"thlwName":"SUNSET", "thwDescribe":"Sunset is when the sun goes down and the sky turns orange.", "thlwAudioDescribe":"sunset_describe.mp3", "thlwAudioL":"sunset_l.mp3", "thlwAudioQ":"sunset_q.mp3", "thlwImage":"sunset.png"},
+{"thlwName":"BRIDGE", "thwDescribe":"A bridge lets you cross over water or a road safely.", "thlwAudioDescribe":"bridge_describe.mp3", "thlwAudioL":"bridge_l.mp3", "thlwAudioQ":"bridge_q.mp3", "thlwImage":"bridge.png"},
+{"thlwName":"WINDOW", "thwDescribe":"A window is a glass opening in a wall that lets light in.", "thlwAudioDescribe":"window_describe.mp3", "thlwAudioL":"window_l.mp3", "thlwAudioQ":"window_q.mp3", "thlwImage":"window.png"},
+{"thlwName":"CAMERA", "thwDescribe":"A camera takes pictures of people, places, and things.", "thlwAudioDescribe":"camera_describe.mp3", "thlwAudioL":"camera_l.mp3", "thlwAudioQ":"camera_q.mp3", "thlwImage":"camera.png"}
+]

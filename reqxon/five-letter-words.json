@@ -1,0 +1,17 @@
+[
+{"thlwName":"APPLE", "thwDescribe":"An apple is a sweet fruit you can eat.", "thlwAudioDescribe":"apple_describe.mp3", "thlwAudioL":"apple_l.mp3", "thlwAudioQ":"apple_q.mp3", "thlwImage":"apple.png"},
+{"thlwName":"HOUSE", "thwDescribe":"A house is where people live and stay safe.", "thlwAudioDescribe":"house_describe.mp3", "thlwAudioL":"house_l.mp3", "thlwAudioQ":"house_q.mp3", "thlwImage":"house.png"},
+{"thlwName":"TABLE", "thwDescribe":"A table is a flat surface for eating or drawing.", "thlwAudioDescribe":"table_describe.mp3", "thlwAudioL":"table_l.mp3", "thlwAudioQ":"table_q.mp3", "thlwImage":"table.png"},
+{"thlwName":"CHAIR", "thwDescribe":"A chair is something you sit on.", "thlwAudioDescribe":"chair_describe.mp3", "thlwAudioL":"chair_l.mp3", "thlwAudioQ":"chair_q.mp3", "thlwImage":"chair.png"},
+{"thlwName":"SMILE", "thwDescribe":"A smile shows you are happy.", "thlwAudioDescribe":"smile_describe.mp3", "thlwAudioL":"smile_l.mp3", "thlwAudioQ":"smile_q.mp3", "thlwImage":"smile.png"},
+{"thlwName":"BREAD", "thwDescribe":"Bread is a soft food you can toast or eat with butter.", "thlwAudioDescribe":"bread_describe.mp3", "thlwAudioL":"bread_l.mp3", "thlwAudioQ":"bread_q.mp3", "thlwImage":"bread.png"},
+{"thlwName":"TRAIN", "thwDescribe":"A train rides on tracks and carries many people.", "thlwAudioDescribe":"train_describe.mp3", "thlwAudioL":"train_l.mp3", "thlwAudioQ":"train_q.mp3", "thlwImage":"train.png"},
+{"thlwName":"WATER", "thwDescribe":"Water is the clear liquid you drink to stay healthy.", "thlwAudioDescribe":"water_describe.mp3", "thlwAudioL":"water_l.mp3", "thlwAudioQ":"water_q.mp3", "thlwImage":"water.png"},
+{"thlwName":"SUGAR", "thwDescribe":"Sugar is sweet and makes treats taste good.", "thlwAudioDescribe":"sugar_describe.mp3", "thlwAudioL":"sugar_l.mp3", "thlwAudioQ":"sugar_q.mp3", "thlwImage":"sugar.png"},
+{"thlwName":"MONEY", "thwDescribe":"Money is used to buy things you need.", "thlwAudioDescribe":"money_describe.mp3", "thlwAudioL":"money_l.mp3", "thlwAudioQ":"money_q.mp3", "thlwImage":"money.png"},
+{"thlwName":"RIVER", "thwDescribe":"A river is a long stream of water that flows.", "thlwAudioDescribe":"river_describe.mp3", "thlwAudioL":"river_l.mp3", "thlwAudioQ":"river_q.mp3", "thlwImage":"river.png"},
+{"thlwName":"OCEAN", "thwDescribe":"The ocean is a huge body of salty water.", "thlwAudioDescribe":"ocean_describe.mp3", "thlwAudioL":"ocean_l.mp3", "thlwAudioQ":"ocean_q.mp3", "thlwImage":"ocean.png"},
+{"thlwName":"CANDY", "thwDescribe":"Candy is a sweet treat that melts in your mouth.", "thlwAudioDescribe":"candy_describe.mp3", "thlwAudioL":"candy_l.mp3", "thlwAudioQ":"candy_q.mp3", "thlwImage":"candy.png"},
+{"thlwName":"GRASS", "thwDescribe":"Grass is green and grows on the ground.", "thlwAudioDescribe":"grass_describe.mp3", "thlwAudioL":"grass_l.mp3", "thlwAudioQ":"grass_q.mp3", "thlwImage":"grass.png"},
+{"thlwName":"EAGLE", "thwDescribe":"An eagle is a big bird that soars high in the sky.", "thlwAudioDescribe":"eagle_describe.mp3", "thlwAudioL":"eagle_l.mp3", "thlwAudioQ":"eagle_q.mp3", "thlwImage":"eagle.png"}
+]
