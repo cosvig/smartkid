@@ -1,27 +1,35 @@
-import { showTutChalPage } from './main.js';
+import { selectedHPset, showTutChalPage } from './main.js';
 import { threeFourLWBoard, startLessong, endLessonClose } from './board.js';
 
 //const json no changes made
-export var threeLetterWords = '';
-export var fourLetterWords = '';
+var threeLetterWords = '';
+var fourLetterWords = '';
 var fiveLetterWords = '';
 var sixLetterWords = '';
+var sevenLetterWords = '';
 
 export var challengesNoLessonMerge = '';
-
-//new set created
 export var alphabet = '';
-export var setconstThreeLW = '';
-export var setconstFourLW = '';
 
-export var currentThreeLW = '';
-export var currentFourLW = '';
+//NEW SET CREATED
+var setconstThreeLW = '';
+var setconstFourLW = '';
+var setconstFiveLW = '';
+var setconstSixLW = '';
+var setconstSeveLW = '';
+
+var currentThreeLW = '';
+var currentFourLW = '';
+var currentFiveLW = '';
+var currentSixLW = '';
+var currentSevenLW = '';
+
 //export var preLoadMergeSet = ''
 export var currentMergeSet = '';
 export var challengeOnlyArr = '';
 
-export var currentBatchIndex = 0;
-export var pgnConst = 3;
+export var currentBatchIndex = 0; 
+export var pgnConst = 3; //Get 3 json each at every turn
 
 export var constantArrayNumber = 15; //We are using this for now (dynamic in future)
 
@@ -47,11 +55,37 @@ export function threeFourLW(){
 	}
 }
 
+export function fiveToSevenLW(){
+	$('#pageCamp').load('tut-chal.html', function() {
+		showTutChalPage();
+		tlwjs();
+	});
+	function tlwjs(){
+		relayJSONfile('./reqxon/five-letter-words.json', function(data){
+			fiveLetterWords = data;
+			setconstFiveLW = [...fiveLetterWords];
+			flwjs()
+        });
+	}
+	function flwjs(){
+		relayJSONfile('./reqxon/six-letter-words.json', function(data){
+			sixLetterWords = data;
+			setconstSixLW = [...sixLetterWords];
+			rzLKh()
+        });
+	}
+	function rzLKh(){
+		relayJSONfile('./reqxon/seven-letter-words.json', function(data){
+			sevenLetterWords = data;
+			setconstSeveLW = [...sevenLetterWords];
+			alphetArrConstruct();
+			slicingandsetting()
+        });
+	}
+}
+
 function slicingandsetting(){
-	shuffle(setconstThreeLW);
-	shuffle(setconstFourLW);
-	
-	
+		
 	//preLoadMergeSet = [...setconstThreeLW,  ...setconstFourLW]
 	//currentThreeLW = setconstThreeLW.slice(0, 1);
 	//currentFourLW = setconstFourLW.slice(0, 1);
@@ -61,10 +95,25 @@ function slicingandsetting(){
 	//currentBatchIndex = 6;
 	
 	let startIdx = currentBatchIndex * pgnConst;
-	currentThreeLW = setconstThreeLW.slice(startIdx, startIdx + pgnConst);
-	currentFourLW = setconstFourLW.slice(startIdx, startIdx + pgnConst);
+	if(selectedHPset == "first"){
+		shuffle(setconstThreeLW);
+		shuffle(setconstFourLW);
+		
+		currentThreeLW = setconstThreeLW.slice(startIdx, startIdx + pgnConst);
+		currentFourLW = setconstFourLW.slice(startIdx, startIdx + pgnConst);
+		currentMergeSet = [...currentThreeLW,  ...currentFourLW];
+	}else if(selectedHPset == "second"){
+		shuffle(setconstFiveLW);
+		shuffle(setconstSixLW);
+		shuffle(setconstSeveLW);
+		
+		currentFiveLW = setconstFiveLW.slice(startIdx, startIdx + pgnConst);
+		currentSixLW = setconstSixLW.slice(startIdx, startIdx + pgnConst);
+		currentSevenLW = setconstSeveLW.slice(startIdx, startIdx + pgnConst);
+		currentMergeSet = [...currentFiveLW,  ...currentSixLW ,  ...currentSevenLW];
+	}
 	
-	currentMergeSet = [...currentThreeLW,  ...currentFourLW];
+	
 	shuffle(currentMergeSet);
 	console.log(currentMergeSet)
 	challengeOnlyArr = [...currentMergeSet];
@@ -75,10 +124,18 @@ function slicingandsetting(){
 
 export function deseydicing(){
 	let startIdx = currentBatchIndex * pgnConst;
-	currentThreeLW = setconstThreeLW.slice(startIdx, startIdx + pgnConst);
-	currentFourLW = setconstFourLW.slice(startIdx, startIdx + pgnConst);
 	
-	currentMergeSet = [...currentThreeLW,  ...currentFourLW];
+	if(selectedHPset == "first"){
+		currentThreeLW = setconstThreeLW.slice(startIdx, startIdx + pgnConst);
+		currentFourLW = setconstFourLW.slice(startIdx, startIdx + pgnConst);
+		currentMergeSet = [...currentThreeLW,  ...currentFourLW];
+	}else if(selectedHPset == "second"){
+		currentFiveLW = setconstFiveLW.slice(startIdx, startIdx + pgnConst);
+		currentSixLW = setconstSixLW.slice(startIdx, startIdx + pgnConst);
+		currentSevenLW = setconstSeveLW.slice(startIdx, startIdx + pgnConst);
+		currentMergeSet = [...currentFiveLW,  ...currentSixLW ,  ...currentSevenLW];
+	}
+	
 	shuffle(currentMergeSet);
 	shuffle(currentMergeSet);
 	console.log(currentMergeSet)
@@ -98,7 +155,11 @@ export function increaseCurrentBatchIndex(){
 
 
 export function takechallengesNoLMerge(){
-	challengesNoLessonMerge = [...setconstThreeLW,  ...setconstFourLW];
+	if(selectedHPset == "first"){
+		challengesNoLessonMerge = [...setconstThreeLW,  ...setconstFourLW];
+	}else if(selectedHPset == "second"){
+		challengesNoLessonMerge = [...setconstFiveLW,  ...setconstSixLW,  ...setconstSeveLW];
+	}
 	shuffle(challengesNoLessonMerge);
 	shuffle(challengesNoLessonMerge);
 	startLessong();

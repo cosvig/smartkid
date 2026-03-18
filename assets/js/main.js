@@ -1,10 +1,16 @@
 //import { fullleaguedata } from './menu.js';
-import { threeFourLW } from './serve.js';
-
+import { threeFourLW, fiveToSevenLW } from './serve.js';
+export var selectedHPset = '';
 document.getElementById("embroOne").addEventListener("click", function(event) { 
+	selectedHPset = 'first';
 	threeFourLW();
 });
 
+
+document.getElementById("embroTwo").addEventListener("click", function(event) { 
+	selectedHPset = 'second';
+	fiveToSevenLW();
+});
 
 
 export function showTutChalPage(){

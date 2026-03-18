@@ -84,14 +84,14 @@ export function threeFourLWBoard(){
 	lessonWDC.innerHTML = currentMergeSet[0].thwDescribe;
 	
 	document.getElementById("takingchallenges").addEventListener("click", function(event) { 
-	ChallengesNoL = true;
-	resetOverallChallenge()
-	statsCounter = currentMergeSet.length
-	document.getElementById("takingchallenges").style.display = 'none';
-	document.getElementById("rboard").style.display = 'none';
-	takechallengesNoLMerge();
-	//startLessong();
-});
+		ChallengesNoL = true;
+		resetOverallChallenge()
+		statsCounter = currentMergeSet.length
+		document.getElementById("takingchallenges").style.display = 'none';
+		document.getElementById("rboard").style.display = 'none';
+		takechallengesNoLMerge();
+		//startLessong();
+	});
 	
 	clickingAgain()
 	//statsCounter = currentMergeSet.length;
@@ -312,6 +312,12 @@ function gotochallengeP(){
 		slicedSetNewalphabet = setNewalphabet.splice(0, 3);
 	}else if(alphsetLength == 4){
 		slicedSetNewalphabet = setNewalphabet.splice(0, 2);
+	}else if(alphsetLength == 5){
+		slicedSetNewalphabet = setNewalphabet.splice(0, 4);
+	}else if(alphsetLength == 6){
+		slicedSetNewalphabet = setNewalphabet.splice(0, 3);
+	}else if(alphsetLength == 7){
+		slicedSetNewalphabet = setNewalphabet.splice(0, 2);
 	}
 	shuffle(slicedSetNewalphabet)
 	let combineAlphals = [...slicedSetNewalphabet, ...alphsetArray];
@@ -433,6 +439,12 @@ function gotochallengeOnlyP(){
 		slicedSetNewalphabet = setNewalphabet.splice(0, 3);
 	}else if(alphsetLength == 4){
 		slicedSetNewalphabet = setNewalphabet.splice(0, 2);
+	}else if(alphsetLength == 5){
+		slicedSetNewalphabet = setNewalphabet.splice(0, 4);
+	}else if(alphsetLength == 6){
+		slicedSetNewalphabet = setNewalphabet.splice(0, 3);
+	}else if(alphsetLength == 7){
+		slicedSetNewalphabet = setNewalphabet.splice(0, 2);
 	}
 	shuffle(slicedSetNewalphabet)
 	let combineAlphals = [...slicedSetNewalphabet, ...alphsetArray];
@@ -550,6 +562,12 @@ function gotochallengeNoLP(){
 	if(alphsetLength == 3){
 		slicedSetNewalphabet = setNewalphabet.splice(0, 3);
 	}else if(alphsetLength == 4){
+		slicedSetNewalphabet = setNewalphabet.splice(0, 2);
+	}else if(alphsetLength == 5){
+		slicedSetNewalphabet = setNewalphabet.splice(0, 4);
+	}else if(alphsetLength == 6){
+		slicedSetNewalphabet = setNewalphabet.splice(0, 3);
+	}else if(alphsetLength == 7){
 		slicedSetNewalphabet = setNewalphabet.splice(0, 2);
 	}
 	shuffle(slicedSetNewalphabet)
@@ -902,7 +920,7 @@ function stringToArray(str) {
 
 async function isInternetAvailable() {
   try {
-    const response = await fetch("https://smartme.pages.dev/pixagime/sun.png", {
+    const response = await fetch("https://smartme.pages.dev//pixagime/sun.png", {
       method: "HEAD",
       cache: "no-store"
     });
