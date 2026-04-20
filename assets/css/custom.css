@@ -1,0 +1,27 @@
+.v-click{
+    cursor: pointer;
+}
+.v-flex{
+  display: flex;
+}
+.v-mgtop-n-26{
+  margin-top: -26px !important;
+}
+.v-mgtop-10{
+  margin-top: 10px;
+}
+.v-pdbt-05{
+  padding-bottom: 5px;
+}
+.v-pdlr-10{
+  padding: 0px 10px;
+}
+.v-bg-white{
+  background-color: #fff;
+}
+.v-bg-262{
+  background-color: #262626;
+}
+.v-tdud{
+  text-decoration: underline;
+}
